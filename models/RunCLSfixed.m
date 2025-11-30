@@ -43,8 +43,8 @@ end
 assignin('base','sens_units',outputs.units) % Sensing charts Chart (unit) subsystem
 %Prepare the parameters
 if outputs.units == 2 
-    filename='N3Cfg_second.mat'; 
-    datafile='N3Data_second.mat';
+    filename='Heart_Network_Example_Cfg.mat'; 
+    datafile='Heart_Network_Example_Data.mat';
     pathsheet='Path_second';
     nodesheet='Node_second'; 
     assignin('base','solvertime',5); % solving time for the GUI cells 
@@ -54,8 +54,8 @@ if outputs.units == 2
     assignin('base','unit_conversion',1); % used with the N node ms/s setting in RR
     assignin('base','stoptime',2) % CLSfixed initial stop time
 elseif outputs.units == 1
-    filename='N3Cfg.mat'; 
-    datafile='N3Data.mat'; 
+    filename='Heart_Network_Example_Cfg.mat'; 
+    datafile='Heart_Network_Example_Data.mat'; 
     pathsheet='Path'; 
     nodesheet='Node'; 
     assignin('base','solvertime',5000);
@@ -67,9 +67,9 @@ elseif outputs.units == 1
 end
 
 % Extract the node classification data from the xlsx file
-[~,~,nodes_raw]=xlsread('Heart_N3_second.xlsx',nodesheet);
-[~,~,path_raw]=xlsread('Heart_N3_second.xlsx',pathsheet);
-[~,~,probes_raw]=xlsread('Heart_N3_second.xlsx','Probe');
+[~,~,nodes_raw]=xlsread('Heart_Network_Example.xlsx',nodesheet);
+[~,~,path_raw]=xlsread('Heart_Network_Example.xlsx',pathsheet);
+[~,~,probes_raw]=xlsread('Heart_Network_Example.xlsx','Probe');
 % Edit the network model
 if outputs.editmodel
     global node_atts
