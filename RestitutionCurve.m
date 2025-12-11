@@ -1,46 +1,42 @@
 
 
 % Find the action potential durations from simulation data
-% [Durations_temp, DI_temp] = APD(out.ScopeData{1}.Values.Data, out.ScopeData{1}.Values.Time);
-% [Durations_temp1, DI_temp1] = APD(out.ScopeData1{1}.Values.Data, out.ScopeData1{1}.Values.Time);
-% [Durations_temp2, DI_temp2] = APD(out.ScopeData2{1}.Values.Data, out.ScopeData2{1}.Values.Time);
-% 
-% BCL = Node_Raw(1, 4);
-% BCL = BCL{1};
+[Durations_temp, DI_temp] = APD(out.ScopeData{1}.Values.Data, out.ScopeData{1}.Values.Time);
+[Durations_temp1, DI_temp1] = APD(out.ScopeData1{1}.Values.Data, out.ScopeData1{1}.Values.Time);
+[Durations_temp2, DI_temp2] = APD(out.ScopeData2{1}.Values.Data, out.ScopeData2{1}.Values.Time);
 
-if isfile("Durations.mat")
-    load("Durations.mat");
+BCL = PulsePeriod;
+
+if isfile("Durations_Paced.mat")
+    load("Durations_Paced.mat");
 else
     Durations = [];
     Durations1 = [];
     Durations2 = [];
 end
 
-if isfile("DI.mat")
-    load("DI.mat")
+if isfile("DI_Paced.mat")
+    load("DI_Paced.mat")
 else
     DI = [];
     DI1 = [];
     DI2 = [];
 end
 
-% Durations_temp = horzcat(Durations_temp, BCL*ones(length(Durations_temp),1));
-% Durations_temp1 = horzcat(Durations_temp1, BCL*ones(length(Durations_temp1),1));
-% Durations_temp2 = horzcat(Durations_temp2, BCL*ones(length(Durations_temp2),1));
-% 
-% Durations = vertcat(Durations, Durations_temp);
-% Durations1 = vertcat(Durations1, Durations_temp1);
-% Durations2 = vertcat(Durations2, Durations_temp2);
-% 
-% DI = vertcat(DI, DI_temp);
-% DI1 = vertcat(DI1, DI_temp1);
-% DI2 = vertcat(DI2, DI_temp2);
-% 
-% save("Durations.mat", "Durations", "Durations1", "Durations2");
-% save("DI.mat", "DI", "DI1", "DI2");
+Durations_temp = horzcat(Durations_temp, BCL*ones(length(Durations_temp),1));
+Durations_temp1 = horzcat(Durations_temp1, BCL*ones(length(Durations_temp1),1));
+Durations_temp2 = horzcat(Durations_temp2, BCL*ones(length(Durations_temp2),1));
 
-% tbl = readtable("Durations.mat");
-% tbl1 = readtable("DI.mat");
+Durations = vertcat(Durations, Durations_temp);
+Durations1 = vertcat(Durations1, Durations_temp1);
+Durations2 = vertcat(Durations2, Durations_temp2);
+
+DI = vertcat(DI, DI_temp);
+DI1 = vertcat(DI1, DI_temp1);
+DI2 = vertcat(DI2, DI_temp2);
+
+save("Durations_Paced.mat", "Durations", "Durations1", "Durations2");
+save("DI_Paced.mat", "DI", "DI1", "DI2");
 
 % Plot Durations against DI to find the Restitution Curve
 figure
@@ -48,7 +44,7 @@ figure
 hold on
 
 cmap = jet(256);
-colormap jet
+% colormap jet
 
 scatter1 = scatter(DI, Durations(:,1), 50, cmap(round(Durations(:,2)*301.1765), :), "o", 'DisplayName', 'Node 1 (NM)');
 scatter2 = scatter(DI1, Durations1(:,1), 50, cmap(round(Durations1(:,2)*301.1765), :), "square", 'DisplayName', 'Node 2 (M)');
