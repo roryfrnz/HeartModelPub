@@ -1,8 +1,8 @@
 % Assign scope data from each node to a variable
 Node1AP = out.ScopeData{1}.Values.Data;
-Node2AP = out.ScopeData3{1}.Values.Data;
+Node2AP = out.ScopeData2{1}.Values.Data;
 Node3AP = out.ScopeData1{1}.Values.Data;
-Node4AP = out.ScopeData2{1}.Values.Data;
+Node4AP = out.ScopeData3{1}.Values.Data;
 
 time = out.ScopeData{1}.Values.Time;
 
@@ -43,7 +43,7 @@ hold off
 
 ax(2) = subplot(4, 1, 2);
 plot(time, Node2AP, "black");
-title('Fast Cell (NM)');
+title('Slow Cell (NM)');
 ylabel('Voltage (mV)');
 xlabel('Time (s)');
 
@@ -79,7 +79,7 @@ hold off
 
 ax(3) = subplot(4, 1, 4);
 plot(time, Node4AP, "black");
-title('Slow Cell (NM)');
+title('Fast Cell (NM)');
 ylabel('Voltage (mV)');
 xlabel('Time (s)');
 
