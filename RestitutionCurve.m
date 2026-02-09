@@ -44,14 +44,14 @@ figure
 hold on
 
 cmap = jet(256);
-% colormap jet
+colormap jet
 
 scatter1 = scatter(DI, Durations(:,1), 50, cmap(round(Durations(:,2)*301.1765), :), "o", 'DisplayName', 'Node 1 (NM)');
 scatter2 = scatter(DI1, Durations1(:,1), 50, cmap(round(Durations1(:,2)*301.1765), :), "square", 'DisplayName', 'Node 2 (M)');
 scatter3 = scatter(DI2, Durations2(:,1), 50, cmap(round(Durations2(:,2)*301.1765), :), "^", 'DisplayName', 'Node 3 (M)');
 
 c = colorbar('TickLabels',{'0','0.085','0.17','0.255','0.34','0.425','0.51','0.595','0.68','0.765','0.85'});
-c.Label.String = 'Base Cycle Length (s)';
+c.Label.String = 'Pulse Period (s)';
 
 scatter1.DataTipTemplate.DataTipRows(1).Label = 'Diastolic Interval (s)';
 scatter1.DataTipTemplate.DataTipRows(2).Label = 'Action Potential Duration (s)';
