@@ -106,7 +106,7 @@ assignin('base','paras_length',length(pp))
 assignin('base','cfg_length',length(cfgdata))
 assignin('base','pNode_length',length(pNode))
 assignin('base','pPath_length',length(pPath))
-models={'CLSfixed', 'CLSfixed_pace', 'CLSfixed_nopace'};
+models={'CLSfixed', 'CLSfixed_pace', 'CLSfixedExample3'};
 % Specify the model name
 modelName = models{outputs.pacemaker};
 % Specify the model path
