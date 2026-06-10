@@ -8,4 +8,4 @@ addpath([path_var,filesep 'src']);
 addpath([path_var,filesep 'models']);
 addpath([path_var,filesep 'models_refine']);
 addpath([path_var,filesep 'Examples']);
-addpath([path_var,filesep 'Examples/models']);
+addpath([path_var,filesep 'Examples\models']);
